@@ -1,0 +1,5 @@
+{
+    "env": {
+        "JWT_TOKEN": "This is a secret string used to encrypt the json web token."
+    }
+}
