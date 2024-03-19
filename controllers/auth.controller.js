@@ -62,13 +62,11 @@ function login(req, res) {
  */
 function signup(req, res) {
     //Check if there is a pre-existing username with this name or email
-    models.User.findOne({ where: {
-        [Op.or]: [{ email: req.body.email }, { name: req.body.name }]
-    }}).then((result) => {
+    models.User.findOne({ where: { email: req.body.email }}).then((result) => {
         if (result) {
             //If there is a pre-existing user send a 409 error
             res.status(409).json({
-                message: "Email or username is taken!"
+                message: "Email is taken!"
             });
         } else {
             //If there is no pre-existing user save user to database
@@ -151,7 +149,10 @@ function deleteAccount(req, res) {
  * @param {*} req - the http request
  * @param {*} res - the http response
  */
-function updateAccount(req, res) {}
+function updateAccount(req, res) {
+    const id = req.params.id;
+    
+}
 
 
 module.exports = {

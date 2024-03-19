@@ -22,8 +22,17 @@ router.post(
 /**
  * Route to access the delete account function
  */
-router.post(
+router.delete(
     "/delete/:id",
     authController.deleteAccount
 );
+
+/**
+ * Route to access the update account function
+ */
+router.patch(
+    "/update/:id",
+    authController.updateAccount
+);
+
 module.exports = router;
