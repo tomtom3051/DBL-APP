@@ -25,7 +25,7 @@ function login(req, res) {
                         userId: user.id,
                         email: user.email,
                         role: user.role
-                    }, process.env.JWT_TOKEN, function(err, token) {
+                    }, "This is a secret string used to encrypt the json web token.", function(err, token) {
                         if (err) {
                             res.status(500).json({
                                 message: "Error occured while generating token",
