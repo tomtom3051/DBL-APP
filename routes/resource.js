@@ -11,7 +11,7 @@ router.get(
 
 //Path to get a specific study resource
 router.get(
-    "/resource/get/:id",
+    "/search/get/:id",
     resourceController.getResourceById
 );
 
@@ -32,3 +32,6 @@ router.patch(
     "/update",
     resourceController.editResource
 );
+
+
+module.exports = router;

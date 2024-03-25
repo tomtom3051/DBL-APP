@@ -12,8 +12,14 @@ module.exports = {
       authorId: {
         type: Sequelize.INTEGER
       },
+      authorName: {
+        type: Sequelize.STRING
+      },
       courseId: {
         type: Sequelize.INTEGER
+      },
+      title: {
+        type: Sequelize.STRING
       },
       description: {
         type: Sequelize.STRING

@@ -6,6 +6,9 @@ const authRoute = require('./routes/auth');
 const courseRoute = require('./routes/course');
 const userRoute = require('./routes/user');
 const followRoute = require('./routes/follow');
+const resourceRoute = require('./routes/resource');
+const imageRoute = require('./routes/images');
+const fileRoute = require('./routes/files');
 
 const app = express();
 
@@ -23,6 +26,12 @@ app.use((req, res, next) => {
     next();
 });
 
+//For sending img files to the front end
+app.use('/pictures', express.static('pictures'));
+
+//For sending pdf files to the front end
+app.use('/files', express.static('files'));
+
 //Set up connection to auth route
 app.use('/auth', authRoute);
 
@@ -34,5 +43,14 @@ app.use('/course', courseRoute);
 
 //Set up connection to the follow route
 app.use('/follow', followRoute);
+
+//Set up connection to the resource route
+app.use('/resource', resourceRoute);
+
+//For uploading img files
+app.use("/image", imageRoute);
+
+//For uploading pdf files
+app.use("/file", fileRoute);
 
 module.exports = app;

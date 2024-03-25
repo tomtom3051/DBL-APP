@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Resource.init({
     authorId: DataTypes.INTEGER,
+    authorName: DataTypes.STRING,
     courseId: DataTypes.INTEGER,
+    title: DataTypes.STRING,
     description: DataTypes.STRING,
     fileType: DataTypes.STRING
   }, {
