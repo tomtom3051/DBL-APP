@@ -36,6 +36,7 @@ function login(req, res) {
                                 message: "Authentication successful!",
                                 token: token,
                                 id: user.id,
+                                name: user.name,
                                 role: user.role
                             });
                         }
@@ -106,10 +107,26 @@ function signup(req, res) {
 
                     //If data is valid add user to the User database
                     models.User.create(user).then(result => {
-                        res.status(201).json({
-                            message: "User created successfully!",
-                            user: result
-                        });
+                        jwt.sign({
+                            userId: result.id,
+                            email: user.email,
+                            role: user.role
+                        }, "This is a secret string used to encrypt the json web token.", function(err, token) {
+                            if (err) {
+                                res.status(500).json({
+                                    message: "Error occured while generating token",
+                                    error: err
+                                });
+                            } else {
+                                res.status(200).json({
+                                    message: "Authentication successful!",
+                                    token: token,
+                                    id: result.id,
+                                    name: user.name,
+                                    role: user.role
+                                });
+                            }
+                        })
                     }).catch(error => {
                         res.status(500).json({
                             message: "Something went wrong!",

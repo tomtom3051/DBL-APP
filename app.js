@@ -9,6 +9,8 @@ const followRoute = require('./routes/follow');
 const resourceRoute = require('./routes/resource');
 const imageRoute = require('./routes/images');
 const fileRoute = require('./routes/files');
+const reactionRoute = require('./routes/reaction');
+const reasourceFileRoute = require('./routes/resource_file');
 
 const app = express();
 
@@ -52,5 +54,11 @@ app.use("/image", imageRoute);
 
 //For uploading pdf files
 app.use("/file", fileRoute);
+
+//Set up a connection to the reaction route
+app.use('/reaction', reactionRoute);
+
+//Set up connection to the resource file route
+app.use('/resourcefile', reasourceFileRoute);
 
 module.exports = app;
